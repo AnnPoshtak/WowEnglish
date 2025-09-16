@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The best necklace</title>
+    <style>
+        body{
+    background-color: rgb(223, 189, 255);
+}
+
+h1{
+    font-size: 200%;
+    text-align: center;
+    animation: bounce 2s infinite ease-in-out; 
+    position: relative;
+}
+
+@keyframes bounce{
+    0%   { top: 0; }
+    50%  { top: 50px; }
+    100% { top: 0; }
+}
+
+
+button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 12px;
+    background: #ffcc00;
+    cursor: pointer;
+    transition: 0.3s;
+
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button:hover {
+    background: #ff9900;
+    transition: background 0.3s, transform 0.3s;;
+}
+
+div{
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    text-align: center;
+    width: 80%;
+    color: #333;
+    font-weight: bold;
+}
+
+#jokes {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#jokes.show {
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+    <h1>✨The necklace of your dreams✨</h1>
+    <button id="buy">Why You Must Buy It?</button>
+    <div id="jokes"></div>
+
+    <script>
+        const jokes = [
+        "Because it's the only thing shinier than your future!",
+        "My necklace—it's the only bling that comes with a sense of humor.",
+        "You need my necklace because your neck deserves a standing ovation.",
+        "Because diamonds are overrated and my necklace is underrated.",
+        "Buy my necklace and instantly become your grandma's favorite.",
+        "Why must you buy my necklace? Because your neck called and asked for it.",
+        "Because my necklace is the only thing missing from your destiny.",
+        "Buy my necklace—because your outfit needs a plot twist!"
+        ];
+
+        let jokeIndex = 0;
+
+        document.getElementById('buy').addEventListener('click', function(){
+            const jokeDiv = document.getElementById('jokes');
+            jokeDiv.innerText = jokes[jokeIndex];
+            jokeDiv.classList.add('show');
+            jokeIndex++
+            if (jokeIndex >= jokes.length) jokeIndex = 0;
+        });
+        document.addEventListener('keydown', function(event){
+            if (event.key == 'Space'){
+                const jokeDiv = document.getElementById('jokes');
+                jokeDiv.innerText = jokes[jokeIndex];
+                jokeDiv.classList.add('show');
+                jokeIndex++
+                if (jokeIndex >= jokes.length) jokeIndex = 0;
+            }
+            
+        });
+    </script>
+</body>
+</html>
